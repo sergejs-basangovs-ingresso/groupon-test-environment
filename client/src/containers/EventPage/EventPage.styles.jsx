@@ -5,4 +5,8 @@ export const EventPageContainer = styled.div`
 	h2 {
 		text-align: center;
 	}
+	iframe {
+		width: 100%;
+		height: 80vh;
+	}
 `;
