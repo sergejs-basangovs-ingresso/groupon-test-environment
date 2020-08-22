@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { store } from "../../context/store";
-import { isAuthenticated } from "../../context/actions";
+import { isAuthenticated, loginStart } from "../../context/actions";
 
 //components:
 import Header from "../Header/Header.component";
@@ -17,6 +17,7 @@ function App({ history }) {
 	const { authToken } = state;
 
 	useEffect(() => {
+		// on mount only
 		dispatch(isAuthenticated());
 	}, [dispatch]);
 

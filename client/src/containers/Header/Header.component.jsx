@@ -13,8 +13,8 @@ const Header = () => {
 	return (
 		<HeaderContainer>
 			<h1>
-				Booking app test webpage. <br />
-				<small>Embedded in an iframe within this parent page</small>
+				Groupon test environment.
+				<small> For booking application</small>
 			</h1>
 
 			{authToken ? <Navbar /> : null}

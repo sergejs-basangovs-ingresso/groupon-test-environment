@@ -18,11 +18,13 @@ const WelcomePage = () => {
 	return (
 		<WelcomePageContainer>
 			<h2>Welcome, Furious Tester!</h2>
-			<p>Here you can do plenty of things !</p>
-			<p>Select from navigation menu above the event you wish to view.</p>
-			<p>OR you can click this button and logout</p>
-			<div>
-				<Button clickHandler={logOutHandler}>Log out</Button>
+			<p>Here you can do A LOT of things !</p>
+			<p>Select from navigation menu above the event you wish to test.</p>
+			<p>OR .</p>
+			<div data-testid="groupon-test__logout-button">
+				<Button clickHandler={logOutHandler}>
+					You can click this button and Logout
+				</Button>
 			</div>
 		</WelcomePageContainer>
 	);
