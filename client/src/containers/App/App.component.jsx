@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { store } from "../../context/store";
-import { isAuthenticated, loginStart } from "../../context/actions";
+import { loginProceed } from "../../context/actions";
 
 //components:
 import Header from "../Header/Header.component";
 import LoginPage from "../LoginPage/LoginPage.component";
 import WelcomePage from "../WelcomePage/WelcomePage.component";
 import EventPage from "../EventPage/EventPage.component";
+import ErrorView from "../../components/404/ErrorView.component";
 
 //styles:
 import { AppContainer } from "./App.styles";
@@ -18,7 +19,7 @@ function App({ history }) {
 
 	useEffect(() => {
 		// on mount only
-		dispatch(isAuthenticated());
+		dispatch(loginProceed(null, null, dispatch));
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -31,8 +32,9 @@ function App({ history }) {
 			<Header />
 			<Switch>
 				<Route exact path="/" component={WelcomePage} />
-				<Route path="/login" component={LoginPage} />
-				<Route path="/event-:id" component={EventPage} />
+				<Route exact path="/login" component={LoginPage} />
+				<Route exact path="/event-:id" component={EventPage} />
+				<Route render={() => <ErrorView />} />
 			</Switch>
 		</AppContainer>
 	);
