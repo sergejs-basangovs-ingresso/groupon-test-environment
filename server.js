@@ -15,7 +15,6 @@ app.post("/authentication", authRouter);
 //serve react-app in production:
 if (process.env.NODE_ENV === "production") {
 	app.use(compression());
-	app.use(enforce.HTTPS({ trustProtoHeader: true }));
 	//serve our react app all static files in build/ directory:
 	app.use(express.static(path.join(__dirname, "client/build")));
 
