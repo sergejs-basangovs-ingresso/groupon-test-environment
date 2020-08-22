@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import { store } from "../../context/store";
 import { isAuthenticated } from "../../context/actions";
 
@@ -17,13 +17,13 @@ function App({ history }) {
 	const { authToken } = state;
 
 	useEffect(() => {
+		dispatch(isAuthenticated());
+	}, [dispatch]);
+
+	useEffect(() => {
 		const path = authToken ? "/" : "/login";
 		history.push(path);
 	}, [authToken]);
-
-	useEffect(() => {
-		dispatch(isAuthenticated());
-	}, [dispatch]);
 
 	return (
 		<AppContainer>

@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const LoginPageContainer = styled.div`
-	form {
-		max-width: 300px;
-		margin: 24px auto;
-	}
+	max-width: 300px;
+	margin: 24px auto;
 `;
 
 export const ButtonGroup = styled.div`
