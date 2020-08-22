@@ -14,7 +14,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
 				loading: true,
 			};
 		case actionsTypes.LOGIN_SUCCESS:
-		case actionsTypes.IS_AUTHENTICATED:
 			return {
 				...state,
 				loading: false,

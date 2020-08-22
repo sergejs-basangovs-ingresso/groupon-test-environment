@@ -1,15 +1,20 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import { store } from "../../context/store";
 import { loginProceed } from "../../context/actions";
 
 //components:
 import Input from "../../components/Input/Input.component";
 import Button from "../../components/Button/Button.component";
+import Spinner from "../../components/Spinner/Spinner.component";
 
 //styles:
-import { LoginPageContainer, ButtonGroup } from "./LoginPage.styles";
+import {
+	LoginPageContainer,
+	ButtonGroup,
+	ErrorMessage,
+} from "./LoginPage.styles";
 
-const LoginPage = () => {
+const LoginPage = ({ history }) => {
 	const initialState = Object.freeze({
 		username: "",
 		password: "",
@@ -17,7 +22,10 @@ const LoginPage = () => {
 
 	const [credentials, setCredentials] = useState({ ...initialState });
 	const { username, password } = credentials;
-	const { dispatch } = useContext(store);
+	const {
+		state: { loading, authToken, error },
+		dispatch,
+	} = useContext(store);
 
 	const inputChangeHandler = useCallback(
 		(event) => {
@@ -41,29 +49,47 @@ const LoginPage = () => {
 		setCredentials({ ...initialState });
 	};
 
+	const errorMessage = error ? (
+		<ErrorMessage>Login failed. Please, try again</ErrorMessage>
+	) : null;
+
+	useEffect(() => {
+		if (authToken) {
+			history.push("/");
+		}
+	}, [authToken, history]);
+
 	return (
 		<LoginPageContainer>
-			<form onSubmit={formSubmitHandler}>
-				<Input
-					type="text"
-					name="username"
-					label="Username"
-					changeHandler={inputChangeHandler}
-					value={username}
-					placeholder="your B2B #username"
-				/>
-				<Input
-					type="password"
-					name="password"
-					label="Password"
-					changeHandler={inputChangeHandler}
-					value={password}
-					placeholder="your B2B password"
-				/>
-				<ButtonGroup>
-					<Button type="submit">Submit</Button>
-				</ButtonGroup>
-			</form>
+			{loading ? (
+				<Spinner />
+			) : (
+				<form
+					onSubmit={formSubmitHandler}
+					data-testid="groupon-test__login"
+				>
+					{errorMessage}
+					<Input
+						type="text"
+						name="username"
+						label="Username"
+						changeHandler={inputChangeHandler}
+						value={username}
+						placeholder="your B2B #username"
+					/>
+					<Input
+						type="password"
+						name="password"
+						label="Password"
+						changeHandler={inputChangeHandler}
+						value={password}
+						placeholder="your B2B password"
+					/>
+					<ButtonGroup>
+						<Button type="submit">Submit</Button>
+					</ButtonGroup>
+				</form>
+			)}
 		</LoginPageContainer>
 	);
 };

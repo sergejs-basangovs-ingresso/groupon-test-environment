@@ -24,6 +24,18 @@ export const loginError = (error) => ({
 
 export const loginProceed = async (username, password, dispatch) => {
 	dispatch(loginStart());
+
+	// if token exists in cookies:
+	const authToken = getCookie("authToken");
+	if (authToken) {
+		return dispatch(loginSuccess(authToken));
+	}
+
+	// if username, password are null
+	if (!username || !password) {
+		return dispatch(loginSuccess(null));
+	}
+
 	try {
 		const {
 			data: { authToken },
@@ -41,11 +53,6 @@ export const loginProceed = async (username, password, dispatch) => {
 	} catch (error) {
 		dispatch(loginError(error.response.statusText));
 	}
-};
-
-export const isAuthenticated = () => {
-	const authToken = getCookie("authToken");
-	return { type: actionsTypes.IS_AUTHENTICATED, payload: authToken };
 };
 
 export const logoutProceed = () => {

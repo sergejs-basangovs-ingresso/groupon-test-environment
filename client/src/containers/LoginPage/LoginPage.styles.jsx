@@ -10,3 +10,7 @@ export const ButtonGroup = styled.div`
 	display: flex;
 	justify-content: center;
 `;
+
+export const ErrorMessage = styled.p`
+	color: red;
+`;
