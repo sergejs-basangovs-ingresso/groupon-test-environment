@@ -1,0 +1,32 @@
+{
+	"name": "groupon-test-environment",
+	"version": "1.0.0",
+	"engines": {
+		"node": "12.16.3",
+		"npm": "6.14.5"
+	},
+	"description": "full stack application to run Groupon test environment",
+	"main": "index.js",
+	"scripts": {
+		"client": "cd client && npm start",
+		"test": "cd client && npm test",
+		"server": "nodemon server.js",
+		"postinstall": "cd client && npm install",
+		"build": "cd client && npm run build",
+		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+		"start": "node server.js",
+		"heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.20.0",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"concurrently": "^5.3.0"
+	}
+}
