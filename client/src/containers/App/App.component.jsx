@@ -6,32 +6,27 @@ import { loginProceed } from "../../context/actions";
 //components:
 import Header from "../Header/Header.component";
 import LoginPage from "../LoginPage/LoginPage.component";
-import WelcomePage from "../WelcomePage/WelcomePage.component";
+import Homepage from "../Homepage/Homepage.component";
 import EventPage from "../EventPage/EventPage.component";
 import ErrorView from "../../components/404/ErrorView.component";
+import PrivateRoute from "../../components/PrivateRoute/PrivateRoute.component";
 
 //styles:
 import { AppContainer } from "./App.styles";
 
-function App({ history }) {
-	const { state, dispatch } = useContext(store);
-	const { authToken } = state;
+function App() {
+	const { dispatch } = useContext(store);
 
 	useEffect(() => {
-		// on mount only
+		// on mount only:
 		dispatch(loginProceed(null, null, dispatch));
 	}, [dispatch]);
-
-	useEffect(() => {
-		const path = authToken ? "/" : "/login";
-		history.push(path);
-	}, [authToken]);
 
 	return (
 		<AppContainer>
 			<Header />
 			<Switch>
-				<Route exact path="/" component={WelcomePage} />
+				<PrivateRoute exact path="/" component={Homepage} />
 				<Route exact path="/login" component={LoginPage} />
 				<Route exact path="/event-:id" component={EventPage} />
 				<Route render={() => <ErrorView />} />

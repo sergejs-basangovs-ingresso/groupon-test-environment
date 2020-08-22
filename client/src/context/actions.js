@@ -25,9 +25,15 @@ export const loginError = (error) => ({
 export const loginProceed = async (username, password, dispatch) => {
 	dispatch(loginStart());
 
+	// if token exists in cookies:
 	const authToken = getCookie("authToken");
 	if (authToken) {
-		dispatch(loginSuccess(authToken));
+		return dispatch(loginSuccess(authToken));
+	}
+
+	// if username, password are null
+	if (!username || !password) {
+		return dispatch(loginSuccess(null));
 	}
 
 	try {

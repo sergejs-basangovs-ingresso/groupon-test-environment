@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import { store } from "../../context/store";
 import { loginProceed } from "../../context/actions";
 
@@ -14,7 +14,7 @@ import {
 	ErrorMessage,
 } from "./LoginPage.styles";
 
-const LoginPage = () => {
+const LoginPage = ({ history }) => {
 	const initialState = Object.freeze({
 		username: "",
 		password: "",
@@ -23,7 +23,7 @@ const LoginPage = () => {
 	const [credentials, setCredentials] = useState({ ...initialState });
 	const { username, password } = credentials;
 	const {
-		state: { loading, error },
+		state: { loading, authToken, error },
 		dispatch,
 	} = useContext(store);
 
@@ -52,6 +52,12 @@ const LoginPage = () => {
 	const errorMessage = error ? (
 		<ErrorMessage>Login failed. Please, try again</ErrorMessage>
 	) : null;
+
+	useEffect(() => {
+		if (authToken) {
+			history.push("/");
+		}
+	}, [authToken]);
 
 	return (
 		<LoginPageContainer>
