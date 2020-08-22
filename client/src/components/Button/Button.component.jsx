@@ -15,4 +15,4 @@ const Button = ({ children, type, clickHandler, color, background }) => {
 	);
 };
 
-export default Button;
+export default React.memo(Button);

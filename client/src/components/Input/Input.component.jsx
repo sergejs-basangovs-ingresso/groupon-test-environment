@@ -17,4 +17,4 @@ const Input = ({ type, name, label, changeHandler, value, ...otherProps }) => {
 	);
 };
 
-export default Input;
+export default React.memo(Input);

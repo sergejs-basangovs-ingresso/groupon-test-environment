@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { store } from "../../context/store";
 import { loginProceed } from "../../context/actions";
 
@@ -19,13 +19,16 @@ const LoginPage = () => {
 	const { username, password } = credentials;
 	const { dispatch } = useContext(store);
 
-	const inputChangeHandler = (event) => {
-		const { name, value } = event.target;
-		setCredentials({
-			...credentials,
-			[name]: value,
-		});
-	};
+	const inputChangeHandler = useCallback(
+		(event) => {
+			const { name, value } = event.target;
+			setCredentials({
+				...credentials,
+				[name]: value,
+			});
+		},
+		[credentials]
+	);
 
 	const formSubmitHandler = (event) => {
 		event.preventDefault();
@@ -47,6 +50,7 @@ const LoginPage = () => {
 					label="Username"
 					changeHandler={inputChangeHandler}
 					value={username}
+					placeholder="your B2B #username"
 				/>
 				<Input
 					type="password"
@@ -54,6 +58,7 @@ const LoginPage = () => {
 					label="Password"
 					changeHandler={inputChangeHandler}
 					value={password}
+					placeholder="your B2B password"
 				/>
 				<ButtonGroup>
 					<Button type="submit">Submit</Button>

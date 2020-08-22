@@ -29,7 +29,7 @@ const EventPage = ({ match }) => {
 			<h2>{eventName}</h2>
 			<iframe
 				src={iframeUrl}
-				frameborder="0"
+				frameBorder="0"
 				data-testid="groupon-test__booking-app__iframe"
 				title={id}
 			></iframe>
