@@ -1,3 +1,5 @@
+import { events } from "../data/page.content";
+
 export const setCookie = (name, value) => {
 	let date = new Date(Date.now() + 86400e3);
 	date = date.toUTCString();
@@ -17,4 +19,9 @@ export const getCookie = (name) => {
 
 export const deleteCookie = (name) => {
 	window.document.cookie = `${name}=''; max-age=-1`;
+};
+
+export const getEventBookingUrl = (eventId, authToken) => {
+	const { url, eventName } = events.find((event) => event.id === eventId);
+	return { iframeUrl: `${url}&token=${authToken}`, eventName };
 };

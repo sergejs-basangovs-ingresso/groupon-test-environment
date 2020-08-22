@@ -9,11 +9,17 @@ const Navbar = () => {
 	return (
 		<NavbarContainer data-testid="groupon-test__navbar">
 			<ul>
+				<li>
+					<NavLink exact to="/">
+						Homepage
+					</NavLink>
+				</li>
+
 				{events.map(({ id, url, title }) => (
 					<li key={id}>
 						<NavLink
 							exact
-							to={id}
+							to={"event-" + id}
 							activeStyle={{
 								color: "#000",
 								textDecoration: "underline",

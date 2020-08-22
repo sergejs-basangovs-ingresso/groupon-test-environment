@@ -7,6 +7,7 @@ import { isAuthenticated } from "../../context/actions";
 import Header from "../Header/Header.component";
 import LoginPage from "../LoginPage/LoginPage.component";
 import WelcomePage from "../WelcomePage/WelcomePage.component";
+import EventPage from "../EventPage/EventPage.component";
 
 //styles:
 import { AppContainer } from "./App.styles";
@@ -30,6 +31,7 @@ function App({ history }) {
 			<Switch>
 				<Route exact path="/" component={WelcomePage} />
 				<Route path="/login" component={LoginPage} />
+				<Route path="/event-:id" component={EventPage} />
 			</Switch>
 		</AppContainer>
 	);
