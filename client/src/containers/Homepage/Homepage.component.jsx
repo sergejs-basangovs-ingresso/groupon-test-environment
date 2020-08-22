@@ -18,7 +18,7 @@ const Homepage = ({ history }) => {
 		if (!authToken) {
 			history.push("/login");
 		}
-	}, [authToken]);
+	}, [authToken, history]);
 
 	const logOutHandler = () => {
 		dispatch(logoutProceed());

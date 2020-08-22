@@ -57,7 +57,7 @@ const LoginPage = ({ history }) => {
 		if (authToken) {
 			history.push("/");
 		}
-	}, [authToken]);
+	}, [authToken, history]);
 
 	return (
 		<LoginPageContainer>
