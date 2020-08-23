@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { store } from "../../context/store";
 import { getEventData } from "../../context/utils";
+import { testAttributes } from "../../data/page.content";
 
 //styles:
 import { EventPageContainer } from "./EventPage.styles";
@@ -35,7 +36,7 @@ const EventPage = ({ match, history }) => {
 			<iframe
 				src={iframeUrl}
 				frameBorder="0"
-				data-testid="groupon-test__booking-app__iframe"
+				data-testid={testAttributes.bookingIframe}
 				title={id}
 			></iframe>
 		</EventPageContainer>

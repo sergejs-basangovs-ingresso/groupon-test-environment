@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { store } from "../../context/store";
 import { logoutProceed } from "../../context/actions";
+import { testAttributes } from "../../data/page.content";
 
 //components:
 import Button from "../../components/Button/Button.component";
@@ -31,7 +32,7 @@ const Homepage = ({ history }) => {
 			<p>Select from navigation menu above the event you wish to test.</p>
 			<p>OR .</p>
 
-			<div data-testid="groupon-test__logout-button">
+			<div data-testid={testAttributes.logoutButton}>
 				<Button clickHandler={logOutHandler}>
 					You can click this button and Logout
 				</Button>
