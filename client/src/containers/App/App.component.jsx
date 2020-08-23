@@ -15,7 +15,7 @@ import PrivateRoute from "../../components/PrivateRoute/PrivateRoute.component";
 //styles:
 import { AppContainer } from "./App.styles";
 
-export function App() {
+export const App = () => {
 	const { dispatch } = useContext(store);
 
 	useEffect(() => {
@@ -34,6 +34,6 @@ export function App() {
 			</Switch>
 		</AppContainer>
 	);
-}
+};
 
 export default withRouter(App);
