@@ -1,16 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import { store } from "../../context/store";
-import { getEventBookingUrl } from "../../context/utils";
+import { getEventData } from "../../context/utils";
 
 //styles:
 import { EventPageContainer } from "./EventPage.styles";
 
-const EventPage = ({ match }) => {
+const EventPage = ({ match, history }) => {
 	const {
 		state: { authToken },
 	} = useContext(store);
 	const { id } = match.params;
-	const { iframeUrl, eventName } = getEventBookingUrl(id, authToken);
+	const { iframeUrl, eventName } = getEventData(id, authToken);
+
+	// if event not existing, redirect ot 404 page
+	if (!iframeUrl) {
+		history.push("/404");
+	}
 
 	useEffect(() => {
 		const messageHandler = (event) => {

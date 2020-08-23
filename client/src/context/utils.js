@@ -21,7 +21,10 @@ export const deleteCookie = (name) => {
 	window.document.cookie = `${name}=''; max-age=-1`;
 };
 
-export const getEventBookingUrl = (eventId, authToken) => {
-	const { url, eventName } = events.find((event) => event.id === eventId);
-	return { iframeUrl: `${url}&token=${authToken}`, eventName };
+export const getEventData = (eventId, authToken) => {
+	const eventData = events.find((event) => event.id === eventId);
+	const iframeUrl = eventData ? `${eventData.url}&token=${authToken}` : null;
+	const eventName = eventData ? eventData.eventName : null;
+
+	return { iframeUrl, eventName };
 };
