@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { events } from "../../data/page.content";
+import { events, testAttributes } from "../../data/page.content";
 
 //styles:
 import { NavbarContainer } from "./Navbar.styles";
@@ -11,7 +11,7 @@ const Navbar = () => {
 		textDecoration: "underline",
 	};
 	return (
-		<NavbarContainer data-testid="groupon-test__navbar">
+		<NavbarContainer data-testid={testAttributes.navbar}>
 			<ul>
 				<li>
 					<NavLink exact to="/" activeStyle={active}>

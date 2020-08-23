@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { testAttributes } from "../../data/page.content";
 
 import Navbar from "./Navbar.component";
 
@@ -15,7 +16,7 @@ describe("<Navbar/>", () => {
 	});
 	it("should have data test ID attribute", () => {
 		expect(wrapper.find("[data-testid]").props()["data-testid"]).toEqual(
-			"groupon-test__navbar"
+			testAttributes.navbar
 		);
 	});
 	it("should match the snapshot", () => {

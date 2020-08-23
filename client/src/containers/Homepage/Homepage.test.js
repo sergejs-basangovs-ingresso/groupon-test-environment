@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { StoreProvider } from "../../context/store";
+import { testAttributes } from "../../data/page.content";
 
 import Homepage from "./Homepage.component";
 
@@ -26,7 +27,7 @@ describe("<Homepage/>", () => {
 
 	it("should contain data test ID", () => {
 		expect(wrapper.find("[data-testid]").props()["data-testid"]).toEqual(
-			"groupon-test__logout-button"
+			testAttributes.logoutButton
 		);
 	});
 

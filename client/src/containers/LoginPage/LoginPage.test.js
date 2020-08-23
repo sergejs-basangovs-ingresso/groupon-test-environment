@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { StoreProvider } from "../../context/store";
+import { testAttributes } from "../../data/page.content";
 
 import LoginPage from "./LoginPage.component";
 
@@ -21,7 +22,7 @@ describe("<LoginPage/>", () => {
 
 	it("should contain form with data test ID", () => {
 		expect(wrapper.find("[data-testid]").props()["data-testid"]).toEqual(
-			"groupon-test__login"
+			testAttributes.loginForm
 		);
 	});
 

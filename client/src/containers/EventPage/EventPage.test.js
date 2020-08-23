@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { StoreProvider } from "../../context/store";
+import { testAttributes } from "../../data/page.content";
 
 import EventPage from "./EventPage.component";
 
@@ -27,7 +28,7 @@ describe("<EventPage/>", () => {
 
 	it("should contain iframe with data test ID", () => {
 		expect(wrapper.find("[data-testid]").props()["data-testid"]).toEqual(
-			"groupon-test__booking-app__iframe"
+			testAttributes.bookingIframe
 		);
 	});
 

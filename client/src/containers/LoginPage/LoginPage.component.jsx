@@ -1,6 +1,7 @@
 import React, { useState, useContext, useCallback, useEffect } from "react";
 import { store } from "../../context/store";
 import { loginProceed } from "../../context/actions";
+import { testAttributes } from "../../data/page.content";
 
 //components:
 import Input from "../../components/Input/Input.component";
@@ -66,7 +67,7 @@ const LoginPage = ({ history }) => {
 			) : (
 				<form
 					onSubmit={formSubmitHandler}
-					data-testid="groupon-test__login"
+					data-testid={testAttributes.loginForm}
 				>
 					{errorMessage}
 					<Input

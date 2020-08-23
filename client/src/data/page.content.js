@@ -15,3 +15,11 @@ export const events = [
 		eventName: "North Canyon Helicopter Tour",
 	},
 ];
+
+export const testAttributes = Object.freeze({
+	app: "groupon-test",
+	navbar: "groupon-test__navbar",
+	loginForm: "groupon-test__login",
+	logoutButton: "groupon-test__logout-button",
+	bookingIframe: "groupon-test__booking-app__iframe",
+});
