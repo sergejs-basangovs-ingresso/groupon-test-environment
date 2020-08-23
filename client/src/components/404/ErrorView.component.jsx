@@ -9,7 +9,7 @@ const ErrorView = () => {
 	return (
 		<ErrorImageOverlay>
 			<ErrorImageContainer imageUrl="https://i.imgur.com/FOeYt4E.png" />
-			<ErrorImageText>Sorry, something went wrong.</ErrorImageText>
+			<ErrorImageText>Sorry, this page doesn't exist.</ErrorImageText>
 		</ErrorImageOverlay>
 	);
 };
